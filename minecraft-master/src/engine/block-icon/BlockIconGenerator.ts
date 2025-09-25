@@ -15,6 +15,7 @@ import {
 	BlockTextureManager,
 } from "@engine/renderer/BlockMaterialManager.ts";
 import { BlockRegistry } from "@engine/block/BlockRegistry.ts";
+import ModelBlockManager from "@engine/renderer/ModelBlockManager.ts";
 
 export class BlockIconGenerator {
 	public scene: Scene;
@@ -54,7 +55,7 @@ export class BlockIconGenerator {
 		this.blockTextureManager = new BlockTextureManager(this.scene);
 		this.blockTextureManager.registerTextures(textures);
 		this.blockMaterialManager = new BlockMaterialManager(this.scene, this.blockTextureManager);
-		this.miniBlockBuilder = new MiniBlockBuilder(this.scene, this.blockMaterialManager, false);
+		this.miniBlockBuilder = new MiniBlockBuilder(this.scene, this.blockMaterialManager,new ModelBlockManager(this.scene), false);
 	}
 
 	public static async getBlockIconCount() {
